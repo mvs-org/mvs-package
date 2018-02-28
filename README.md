@@ -42,7 +42,31 @@ tarball contents
 
 
 ## windows
-### build standard version package
 
-### build data packed version package
+The following relative paths are all relative to metaverse source root directory.
 
+### preconditions
+
+### 1. building
+
+Use Visual Studio to build Solution builds/msvc-140/metaverse.sln 
+
+
+### 2. install tools
+
+install NSIS
+
+### packageing
+
+### 1. modify nsi script
+
+#### build standard version package
+
+mvs-setup-dll.nsi
+
+#### build data packed version package
+
+mvs-setup-with-database.nsi
+
+
+### 2. run nsi script
