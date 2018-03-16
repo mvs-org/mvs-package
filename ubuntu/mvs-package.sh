@@ -29,11 +29,11 @@ copy_files() {
     done
 }
 
-# files to be copied and zipped
+# files to be copied and tarballed
 declare -a FILES=(
-    mvs-cli
     mvsd
-    mvs-htmls
+    mvs-cli
+    mvs-htmls.zip
     mvs-install.sh
     )
 
@@ -56,17 +56,17 @@ fi
 
 VERSION="$1"
 PACK_NAME="mvs-linux-x86_64-v$VERSION"
-ZIP_FILE_NAME="${PACK_NAME}.zip"
+TARBALL_FILE_NAME="${PACK_NAME}.tar.gz"
 DEST_DIR="$PACK_NAME"
 
-if [ -e "$DEST_DIR" ] || [ -e "$ZIP_FILE_NAME" ]
+if [ -e "$DEST_DIR" ] || [ -e "$TARBALL_FILE_NAME" ]
 then
-    echo "$DEST_DIR or $ZIP_FILE_NAME already exist"
+    echo "$DEST_DIR or $TARBALL_FILE_NAME already exist"
     read -p "do you want to delete them and continue? (y/n)" reply
     if [ "$reply" = y ]
     then
         rm -rf "$DEST_DIR"
-        rm -rf "$ZIP_FILE_NAME"
+        rm -rf "$TARBALL_FILE_NAME"
     else
         echo "you choose not to continue, EXIT"
         exit
@@ -82,11 +82,11 @@ copy_files FILES[@] "$DEST_DIR"
 echo "------ copy finished  ---------"
 echo ""
 
-echo "-- generate zip file $ZIP_FILE_NAME"
-/usr/bin/zip -rq "$ZIP_FILE_NAME" "$DEST_DIR"
-echo "------ zip finished  ---------"
+echo "-- generate tarball file $TARBALL_FILE_NAME"
+/bin/tar -zcvf "$TARBALL_FILE_NAME" "$DEST_DIR"
+echo "------ tarball finished  ---------"
 echo ""
 
 rm -rf "$DEST_DIR"
 
-ls -l "$ZIP_FILE_NAME"
+ls -l "$TARBALL_FILE_NAME"

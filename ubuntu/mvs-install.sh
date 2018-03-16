@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# unpack mvs-htmls
+echo  "unpackaging mvs-htmls......"
+unzip -q mvs-htmls.zip
+
 TARGET=mvs-htmls
 echo "=> copy $TARGET to ~/.metaverse"
 mkdir -p ~/.metaverse

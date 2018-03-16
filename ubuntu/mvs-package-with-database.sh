@@ -2,9 +2,9 @@
 
 usage() {
     echo "Usage:"
-    echo "$0 <synced-block-height>"
+    echo "$0 <version-number> <synced-block-height>"
     echo "eg:"
-    echo "$0 900000"
+    echo "$0 0.7.4 1000000"
 }
 
 check_exist() {
@@ -31,11 +31,16 @@ copy_files() {
 
 # files to be copied and zipped
 declare -a FILES=(
+    mvsd
+    mvs-cli
+    mvs-htmls.zip
     mainnet.tar.gz
-    mvs-block-data-install.sh
+    mvs-install-with-database.sh
     )
 
-if [ $# != 1  ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]
+if [ $# != 2  ] \
+    || [ "$1" = "-h" ] || [ "$1" = "--help" ] \
+    || [ "$2" = "-h" ] || [ "$2" = "--help" ]
 then
     usage
     exit
@@ -52,8 +57,9 @@ then
     exit 1
 fi
 
-HEIGHT="$1"
-PACK_NAME="metaverse-mainnet-blocks-$HEIGHT"
+VERSION="$1"
+HEIGHT="$2"
+PACK_NAME="mvs-linux-database-x86_64-v$VERSION"
 TARBALL_FILE_NAME="${PACK_NAME}.tar.gz"
 DEST_DIR="$PACK_NAME"
 
