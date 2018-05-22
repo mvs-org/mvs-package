@@ -33,7 +33,7 @@ copy_files() {
 declare -a FILES=(
     mvsd
     mvs-cli
-    mvs-htmls.zip
+    mvs-htmls.tar.gz
     mainnet.tar.gz
     mvs-install-with-database.sh
     )

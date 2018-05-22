@@ -2,7 +2,7 @@
 
 # unpack mvs-htmls
 echo  "unpackaging mvs-htmls......"
-unzip -q mvs-htmls.zip
+tar -zxf mvs-htmls.tar.gz
 
 TARGET=mvs-htmls
 echo "=> copy $TARGET to ~/.metaverse"

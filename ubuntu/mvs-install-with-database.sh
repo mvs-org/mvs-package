@@ -9,25 +9,29 @@ DB_FROM_PATH="./mainnet"
 DB_TARGET_PATH="$HOME/.metaverse/mainnet"
 
 declare -a block_data_arr=(
-                "address_asset_table"
                 "address_asset_row"
+                "address_asset_table"
+                "address_did_row"
+                "address_did_table"
+                "asset_table"
                 "block_index"
+                "block_table"
+                "cert_table"
+                "did_table"
                 "history_rows"
+                "history_table"
                 "metadata"
                 "spend_table"
-                "transaction_table"
-                "asset_table"
-                "block_table"
-                "history_table"
                 "stealth_rows"
+                "transaction_table"
                 )
 
 declare -a account_arr=(
-                "account_table"
-                "account_asset_table"
-                "account_asset_row"
-                "account_address_table"
                 "account_address_rows"
+                "account_address_table"
+                "account_asset_row"
+                "account_asset_table"
+                "account_table"
                 )
 
 
@@ -57,9 +61,9 @@ then
     exit 1
 fi
 
-if [ ! -e mvs-htmls.zip ]
+if [ ! -e mvs-htmls.tar.gz ]
 then
-    echo "mvs-htmls.zip not exist"
+    echo "mvs-htmls.tar.gz not exist"
     exit 1
 fi
 
@@ -77,7 +81,7 @@ mkdir -p "$DB_TARGET_PATH"
 
 # unpack mvs-htmls
 echo  "unpackaging mvs-htmls......"
-unzip -q mvs-htmls.zip
+tar -zxf mvs-htmls.tar.gz
 
 # unpack database
 echo  "unpackaging mainnet......"
