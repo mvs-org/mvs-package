@@ -59,7 +59,7 @@ fi
 
 VERSION="$1"
 HEIGHT="$2"
-PACK_NAME="mvs-ubuntu-database-x86_64-v$VERSION"
+PACK_NAME="mvs-linux-database-x86_64-v$VERSION"
 TARBALL_FILE_NAME="${PACK_NAME}.tar.gz"
 DEST_DIR="$PACK_NAME"
 
