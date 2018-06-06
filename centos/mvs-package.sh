@@ -55,7 +55,7 @@ then
 fi
 
 VERSION="$1"
-PACK_NAME="mvs-centos-x86_64-v$VERSION"
+PACK_NAME="mvs-linux-backport-x86_64-v$VERSION"
 TARBALL_FILE_NAME="${PACK_NAME}.tar.gz"
 DEST_DIR="$PACK_NAME"
 

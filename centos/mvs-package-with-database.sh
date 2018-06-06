@@ -59,7 +59,7 @@ fi
 
 VERSION="$1"
 HEIGHT="$2"
-PACK_NAME="mvs-centos-database-x86_64-v$VERSION"
+PACK_NAME="mvs-linux-backport-database-x86_64-v$VERSION"
 TARBALL_FILE_NAME="${PACK_NAME}.tar.gz"
 DEST_DIR="$PACK_NAME"
 
