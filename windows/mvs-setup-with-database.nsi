@@ -101,7 +101,7 @@ Section "MainSection" SEC01
   CreateShortCut "$DESKTOP\Metaverse Wallet.lnk" "$INSTDIR\mvstray.exe" "--ui=true"
   File "${BINARY_DIR}\mvs-cli.exe"
   File "${BINARY_DIR}\mvsd.exe"
-; depend exe / dll
+  ; depend exe / dll
   File "${VS_PATH}\VC\redist\1033\vcredist_x64.exe"
   File "${VS_DLL_PATH}\api-ms-win-crt-runtime-l1-1-0.dll"
   File "${VS_DLL_PATH}\api-ms-win-crt-math-l1-1-0.dll"
@@ -114,22 +114,19 @@ Section "MainSection" SEC01
   SetOutPath "$INSTDIR\mvs-htmls"
   SetOverwrite try
   File /r "${HTMLS_DIR}\*.*"
-  ExecWait "$INSTDIR\mvsd.exe -i"
+  ;ExecWait "$INSTDIR\mvsd.exe -i"
 
-  IfFileExists $APPDATA\Roaming\Metaverse\mainnet 0 +2
-    goto ShowMessageBox
-    goto CopyDatabase
-
+  IfFileExists $APPDATA\Metaverse\mainnet ShowMessageBox CopyDatabase
   ShowMessageBox:
     ;MessageBox MB_YESNO "警告：发现区块数据已存在，是否执行覆盖操作？请确保账户私钥助记符已备份，如您尚未备份，请点否。(Warning: block data is found to have already existed and whether to execute the overlapping operation? Please make sure that private key mnemonics of the account are backed up. If you have not backed up yet, please click No.)" IDYES true IDNO false
-    MessageBox MB_YESNO "Warning: block data is found to have already existed and whether to execute the overlapping operation? Please make sure that private key mnemonics of the account are backed up. If you have not backed up yet, please click No." IDYES true IDNO false
+    MessageBox MB_YESNO "Warning: block data is found to have already existed and whether to execute the overlapping operation? Please make sure that private key mnemonics of the account are backed up, backup the account related tables is also recommentted. If you have not backed up yet, please click No." IDYES true IDNO false
       true:
         Goto CopyDatabase
       false:
         Goto done
 
   CopyDatabase:
-    SetOutPath "$APPDATA\Roaming\Metaverse\mainnet"
+    SetOutPath "$APPDATA\Metaverse\mainnet"
     File /r "${DATABASE_DIR}\mainnet\*"
     Goto done
 
