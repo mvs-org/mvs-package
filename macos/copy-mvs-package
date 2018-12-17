@@ -1,0 +1,16 @@
+#!/bin/bash
+
+SRCROOT=$HOME/Documents/metaverse/mvs_master
+echo "=== SRCROOT = $SRCROOT"
+
+MVS_BIN_SRC_DIR=$SRCROOT/build/bin
+MVS_BIN_DST_DIR=$SRCROOT/builds/mac/installer/mvs-pkg/bin
+
+echo "=== copying mvsd and mvs-cli"
+cp -vf $MVS_BIN_SRC_DIR/{mvsd,mvs-cli} $MVS_BIN_DST_DIR
+
+MVS_HTMLS_SRC_DIR=$HOME/Desktop
+MVS_HTMLS_DST_DIR=$SRCROOT/builds/mac/installer/mvs-pkg
+
+echo "=== copy mvs-htmls.tar.gz"
+cp -vf $MVS_HTMLS_SRC_DIR/mvs-htmls.tar.gz $MVS_HTMLS_DST_DIR
