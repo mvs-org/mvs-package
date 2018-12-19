@@ -1,6 +1,8 @@
 # mvs-package
 ***
 
+Intead of build data packed version package, use `copy-block-data.sh` is recommended to copy block data separately.
+
 ## ubuntu
 ### build standard version package
 
@@ -37,7 +39,21 @@ tarball contents
 > mvs-install-with-database.sh
 
 ## macosx
+# Steps to package
+
 ### build standard version package
+1. build mvsd and mvs-cli use `make`
+2. use script `copy-mvs-package` to copy related files
+copy-mvs-package file content, modify the Paths to your actual Paths
+3. open `Metaverse.xcodeproj` and build `Metaverse.app`
+copy it to Desktop for the next package step
+4. open `mvs-macOSX-x86_64.pkgproj` and package `mvs-macOSX-x86_64-v0.8.5.pkg`
+`0.8.5` is an example version number, please replace the version number before package
+```bash
+# example
+sed -i s/0\.8\.5/0.9.0/g mvs-macOSX-x86_64.pkgproj
+sed -i s/085/090/g mvs-macOSX-x86_64.pkgproj
+```
 
 ### build data packed version package
 
