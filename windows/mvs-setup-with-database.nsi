@@ -3,7 +3,7 @@
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Metaverse"
 ; COMMON_MODIFY_ITEM
-!define PRODUCT_VERSION "0.8.0"
+!define PRODUCT_VERSION "0.9.0"
 !define PRODUCT_PUBLISHER "Metaverse Foundation"
 !define PRODUCT_WEB_SITE "https://mvs.org"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\mvstray.exe"
@@ -25,7 +25,7 @@
 
 ; Set Source Path
 ; COMMON_MODIFY_ITEM
-!define BINARY_DIR "D:\metaverse\metaverse-nova\builds\msvc-140\x64\Release"
+!define BINARY_DIR "D:\compile\metaverse-release\builds\msvc-140\x64\Release"
 !define HTMLS_DIR "E:\mvs-htmls"
 !define DATABASE_DIR "D:\MVS\ChainData\Metaverse"
 
@@ -95,7 +95,6 @@ FunctionEnd
 
 Section "MainSection" SEC01
   SetOutPath "$INSTDIR"
-  SetOverwrite ifnewer
   File "${BINARY_DIR}\mvstray.exe"
   CreateDirectory "$SMPROGRAMS\Metaverse"
   CreateShortCut "$DESKTOP\Metaverse Wallet.lnk" "$INSTDIR\mvstray.exe" "--ui=true"
@@ -112,7 +111,6 @@ Section "MainSection" SEC01
   ;SetOutPath "$DESKTOP"
   ;File "D:\必看！元界钱包安装说明.txt"
   SetOutPath "$INSTDIR\mvs-htmls"
-  SetOverwrite try
   File /r "${HTMLS_DIR}\*.*"
   ;ExecWait "$INSTDIR\mvsd.exe -i"
 
